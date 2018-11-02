@@ -1,4 +1,4 @@
-package com.example.events.es.rabbitmq;
+package com.example.events.infrastracure.rabbitmq;
 
 import org.springframework.amqp.core.FanoutExchange;
 import org.springframework.amqp.rabbit.annotation.EnableRabbit;

@@ -1,7 +1,7 @@
-package com.example.events.es.rabbitmq;
+package com.example.events.infrastracure.rabbitmq;
 
 
-import com.example.events.es.EventStoreService;
+import com.example.events.domain.es.EventStoreService;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;
 import org.springframework.beans.factory.annotation.Autowired;

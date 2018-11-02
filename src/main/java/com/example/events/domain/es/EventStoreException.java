@@ -1,4 +1,4 @@
-package com.example.events.es;
+package com.example.events.domain.es;
 
 
 public class EventStoreException extends RuntimeException  {

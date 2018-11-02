@@ -1,6 +1,8 @@
-package com.example.events.es;
+package com.example.events.domain.es;
 
-import com.example.events.es.rabbitmq.PublishConfig;
+import com.example.events.domain.es.Aggregate;
+import com.example.events.domain.es.EventStatus;
+import com.example.events.infrastracure.rabbitmq.PublishProductConfig;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -69,7 +71,7 @@ public class EventStore {
     }
 
     private EventStatus getInitStatus() {
-        if(PublishConfig.isPublish(this)) {
+        if(PublishProductConfig.isPublish(this)) {
             return EventStatus.NEW;
         }
         return EventStatus.UNSENT;

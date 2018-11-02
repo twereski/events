@@ -1,7 +1,8 @@
-package com.example.events.es;
+package com.example.events.domain.es;
 
 
-import com.example.events.es.rabbitmq.EventPublisher;
+import com.example.events.domain.es.*;
+import com.example.events.infrastracure.rabbitmq.EventPublisher;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;

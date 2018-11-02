@@ -1,5 +1,7 @@
-package com.example.events.es;
+package com.example.events.domain.es;
 
+import com.example.events.domain.es.EventStatus;
+import com.example.events.domain.es.EventStore;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
