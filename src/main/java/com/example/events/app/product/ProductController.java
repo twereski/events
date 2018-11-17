@@ -1,18 +1,23 @@
 package com.example.events.app.product;
 
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.example.events.app.product.command.CommandOne;
+import lombok.AllArgsConstructor;
+import org.springframework.web.bind.annotation.*;
 
+@AllArgsConstructor
 @RestController
 @RequestMapping("/product")
 public class ProductController {
 
-    @RequestMapping("/")
+    final private CommandHandler commandHandler;
+
+    @RequestMapping(value = "/", method = RequestMethod.GET)
     public String index() {
         return "Xd xd dupa";
     }
 
-    public void applyCommandOne() {
-
+    @RequestMapping(value = "/{customerId}/command-one", method = RequestMethod.POST)
+    public void applyCommandOne(@PathVariable("customerId") int customerId, @RequestBody CommandOne commandOne) {
+        commandHandler.handle(commandOne, customerId);
     }
 }

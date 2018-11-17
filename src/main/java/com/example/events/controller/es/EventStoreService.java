@@ -1,7 +1,6 @@
-package com.example.events.domain.es;
+package com.example.events.controller.es;
 
 
-import com.example.events.domain.es.*;
 import com.example.events.infrastracure.rabbitmq.EventPublisher;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.AllArgsConstructor;

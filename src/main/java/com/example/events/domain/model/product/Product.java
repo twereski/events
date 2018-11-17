@@ -1,8 +1,8 @@
 package com.example.events.domain.model.product;
 
 
-import com.example.events.domain.es.Aggregate;
-import com.example.events.domain.es.Event;
+import com.example.events.controller.es.Aggregate;
+import com.example.events.controller.es.Event;
 import com.example.events.domain.model.Money;
 import com.google.common.collect.ImmutableMap;
 import lombok.Getter;

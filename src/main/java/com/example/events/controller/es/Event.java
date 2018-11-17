@@ -1,4 +1,4 @@
-package com.example.events.domain.es;
+package com.example.events.controller.es;
 
 
 import java.util.Date;

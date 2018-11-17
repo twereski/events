@@ -1,7 +1,5 @@
-package com.example.events.domain.es;
+package com.example.events.controller.es;
 
-import com.example.events.domain.es.Aggregate;
-import com.example.events.domain.es.EventStatus;
 import com.example.events.infrastracure.rabbitmq.PublishProductConfig;
 import lombok.AccessLevel;
 import lombok.Getter;

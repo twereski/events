@@ -1,8 +1,8 @@
 package com.example.events.infrastracure.rabbitmq;
 
 
-import com.example.events.domain.es.EventStore;
-import com.example.events.domain.es.EventStoreException;
+import com.example.events.controller.es.EventStore;
+import com.example.events.controller.es.EventStoreException;
 import com.google.common.collect.ImmutableMap;
 import lombok.NonNull;
 
