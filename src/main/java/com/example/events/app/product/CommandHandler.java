@@ -33,7 +33,7 @@ public class CommandHandler {
     @Transactional
     public void handle(@NonNull Command command, @NonNull Integer customerId) {
 
-        Product product = productContainerService.retrieveFrom(command.getProductId());
+        Product product = productContainerService.retrieveFrom(command.getProductId(), customerId);
 
         product = assemblers.get(command.getClass().getName())
                 .toEntity(command, product);

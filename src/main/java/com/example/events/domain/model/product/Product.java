@@ -6,10 +6,12 @@ import com.example.events.controller.es.Event;
 import com.example.events.domain.model.Money;
 import com.google.common.collect.ImmutableMap;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.util.UUID;
 
 @Getter
+@NoArgsConstructor
 public class Product implements Aggregate {
 
     UUID id;
@@ -29,7 +31,7 @@ public class Product implements Aggregate {
 
     @Override
     public ImmutableMap<Integer, Event> getEvents() {
-        return null;
+        return ImmutableMap.of();
     }
 
     @Override

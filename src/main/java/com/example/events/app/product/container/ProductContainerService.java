@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
+import java.util.Objects;
+import java.util.Optional;
 import java.util.UUID;
 
 
@@ -26,9 +28,13 @@ public class ProductContainerService {
         this.objectMapper.registerModule(new GuavaModule());
     }
 
-    public Product retrieveFrom(UUID productId) {
-        ProductContainer productContainer = productContainerRepository.getOne(productId);
+    public Product retrieveFrom(UUID productId, int customerId) {
+        ProductContainer productContainer = productContainerRepository.findById(productId)
+                .orElse(new ProductContainer(customerId));
 
+        if (Objects.isNull(productContainer.getPayLoad())) {
+            return new Product();
+        }
         try {
             return objectMapper.readValue(productContainer.getPayLoad(), Product.class);
         } catch (IOException e) {

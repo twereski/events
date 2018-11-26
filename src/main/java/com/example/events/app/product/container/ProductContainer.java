@@ -9,7 +9,7 @@ import javax.persistence.*;
 import java.util.UUID;
 
 
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@NoArgsConstructor
 @Getter
 @Entity
 @Table(name = "PRODUCT_CONTAINER")
