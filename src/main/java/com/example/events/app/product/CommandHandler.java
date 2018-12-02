@@ -36,7 +36,7 @@ public class CommandHandler {
         Product product = productContainerService.retrieveFrom(command.getProductId(), customerId);
 
         product = assemblers.get(command.getClass().getName())
-                .toEntity(command, product);
+                .applyCommand(command, product);
 
         eventStoreService.saveEvents(product);
         productContainerService.save(product);

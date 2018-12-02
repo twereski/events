@@ -5,5 +5,5 @@ import com.example.events.domain.model.product.Product;
 
 public abstract class ProductAssembler<X extends Command> {
 
-    public abstract Product toEntity(X command, Product product);
+    public abstract Product applyCommand(X command, Product product);
 }

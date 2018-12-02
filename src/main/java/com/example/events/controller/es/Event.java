@@ -1,11 +1,13 @@
 package com.example.events.controller.es;
 
 
-import java.util.Date;
+import java.time.LocalDateTime;
+import java.util.UUID;
 
 public interface Event {
 
-    public String getEmployeeId();
-
-    public Date getCreatedAt();
+    UUID getAggregateId();
+    String getAggregateName();
+    String getEventType();
+    LocalDateTime getCreatedAt();
 }

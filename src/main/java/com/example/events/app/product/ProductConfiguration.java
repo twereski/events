@@ -1,10 +1,10 @@
 package com.example.events.app.product;
 
 
-import com.example.events.app.product.assembler.CommandOneAssembler;
+import com.example.events.app.product.assembler.BuyAssembler;
 import com.example.events.app.product.assembler.ProductAssembler;
-import com.example.events.app.product.command.CommandOne;
-import com.example.events.app.product.command.CommandTwo;
+import com.example.events.app.product.command.Buy;
+import com.example.events.app.product.command.Pay;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -25,8 +25,8 @@ public class ProductConfiguration {
 
         Map<String, ProductAssembler> assemblerMap = new HashMap<>();
 
-        assemblerMap.put(CommandOne.class.getName(), new CommandOneAssembler());
-        assemblerMap.put(CommandTwo.class.getName(), new CommandOneAssembler());
+        assemblerMap.put(Buy.class.getName(), new BuyAssembler());
+        assemblerMap.put(Pay.class.getName(), new BuyAssembler());
 
         return assemblerMap;
     }

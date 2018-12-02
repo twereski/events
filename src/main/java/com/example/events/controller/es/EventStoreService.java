@@ -36,7 +36,7 @@ public class EventStoreService {
                 log.error(e.getMessage());
                 throw new EventStoreException("Bład podczas zapisu zdarzenia", e);
             }
-            EventStore eventStore = new EventStore(aggregate, version, eventSerialized, event.getClass().getCanonicalName(), event.getEmployeeId());
+            EventStore eventStore = new EventStore(event, version, eventSerialized);
             eventStoreList.add(eventStore);
 
         });

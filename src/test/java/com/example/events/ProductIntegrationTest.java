@@ -1,7 +1,7 @@
 package com.example.events;
 
 import com.example.events.app.product.ProductController;
-import com.example.events.app.product.command.CommandOne;
+import com.example.events.app.product.command.Buy;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.Before;
 import org.junit.runner.RunWith;
@@ -34,7 +34,7 @@ public class ProductIntegrationTest {
 
     @Before
     public void setUp() throws Exception {
-        String detailsString = objectMapper.writeValueAsString(new CommandOne(UUID.randomUUID()));
+        String detailsString = objectMapper.writeValueAsString(new Buy());
         this.server.expect(requestTo("/xs/xd")).andRespond(withSuccess(detailsString, MediaType.APPLICATION_JSON));
     }
 }

@@ -2,15 +2,16 @@ package com.example.events.app.product.command;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
-@Setter
-@Getter
-@NoArgsConstructor
 @AllArgsConstructor
-public class CommandOne implements Command {
+@Getter
+public class Pay implements Command {
+
     private UUID productId;
+    private LocalDateTime when;
+    private BigDecimal amount;
 }

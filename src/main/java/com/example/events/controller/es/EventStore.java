@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.UUID;
 
@@ -38,7 +39,7 @@ public class EventStore {
     protected String employeeId;
 
     @Column(name = "CREATED_AT")
-    protected Date createdAt;
+    protected LocalDateTime createdAt;
 
     @Enumerated(EnumType.STRING)
     @Column(name = "STATUS", length = 10)
@@ -48,14 +49,13 @@ public class EventStore {
     @Column(name = "PAY_LOAD")
     protected String payLoad;
 
-    public EventStore(Aggregate aggregate, Integer version, String eventSerialized, String eventType, String employeeId) {
+    public EventStore(Event event, Integer version, String eventSerialized) {
         this.id = UUID.randomUUID();
-        this.aggregateId = aggregate.getId();
-        this.aggregateType = aggregate.getClass().getCanonicalName();
-        this.eventType = eventType;
+        this.aggregateId = event.getAggregateId();
+        this.aggregateType = event.getAggregateName();
+        this.eventType = event.getEventType();
         this.version = version;
-        this.employeeId = employeeId;
-        this.createdAt = new Date();
+        this.createdAt = event.getCreatedAt();
         this.payLoad = eventSerialized;
         this.eventStatus = getInitStatus();
     }
