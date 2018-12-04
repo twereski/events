@@ -7,6 +7,7 @@ import com.example.events.domain.ExceptionMessage;
 import com.example.events.domain.ProductException;
 import com.example.events.domain.model.Money;
 import com.example.events.domain.model.product.event.Bought;
+import com.example.events.domain.model.product.event.CreatedProduct;
 import com.example.events.domain.model.product.event.Paid;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
@@ -14,7 +15,6 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.util.Collections;
 import java.util.Map;
 import java.util.UUID;
 
@@ -35,13 +35,14 @@ public class Product implements Aggregate {
     private ProductState state;
 
 
-    public Product(UUID id, String name, Money basicPrice) {
-        this.id = id;
+    public Product(String name, Money basicPrice) {
+        this.id = UUID.randomUUID();
         this.name = name;
         this.basicPrice = basicPrice;
         this.state = ProductState.NEW;
         this.events = Maps.newHashMap();
         this.currentVersion = 0;
+        addEvent(new CreatedProduct(id, name, basicPrice));
     }
 
     public void buy() {

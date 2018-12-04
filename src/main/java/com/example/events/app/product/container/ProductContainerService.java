@@ -30,7 +30,7 @@ public class ProductContainerService {
         this.objectMapper.registerModule(new GuavaModule());
     }
 
-    public Product retrieveFrom(UUID productId, int customerId) {
+    public Product retrieveFrom(UUID productId) {
         ProductContainer productContainer = productContainerRepository.findById(productId)
                 .orElseThrow(() -> new ProductException(ExceptionMessage.GET_PRODUCT_NULL));
 

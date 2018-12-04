@@ -7,17 +7,19 @@ import spock.lang.Specification
 class ProductContainerServiceTest extends Specification {
     def "RetrieveFrom"() {
         given:
+        def container = Mock(ProductContainer) {
+            getPayLoad() >> "xd"
+        }
         def repo = Mock(ProductContainerRepository) {
-            findOne(_) >> Mock(ProductContainer) {
-                getPayLoad() >> "xd"
-            }
+            findById(_) >> Optional.of(container)
+
         }
         def mapper = Mock(ObjectMapper) {
-            readValue(_, Product.class) >> Mock(Product)
+            readValue(*_) >> Mock(Product)
         }
         def service = new ProductContainerService(repo, mapper)
         when:
-        def  product = service.retrieveFrom(UUID.randomUUID())
+        service.retrieveFrom(UUID.randomUUID())
         then:
         1 * mapper.readValue(_,_)
 
