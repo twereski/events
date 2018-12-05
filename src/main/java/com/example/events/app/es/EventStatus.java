@@ -1,4 +1,4 @@
-package com.example.events.controller.es;
+package com.example.events.app.es;
 
 
 public enum EventStatus {

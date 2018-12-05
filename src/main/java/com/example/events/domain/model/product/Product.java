@@ -1,8 +1,8 @@
 package com.example.events.domain.model.product;
 
 
-import com.example.events.controller.es.Aggregate;
-import com.example.events.controller.es.Event;
+import com.example.events.app.es.Aggregate;
+import com.example.events.app.es.Event;
 import com.example.events.domain.ExceptionMessage;
 import com.example.events.domain.ProductException;
 import com.example.events.domain.model.Money;

@@ -1,4 +1,4 @@
-package com.example.events.controller.es;
+package com.example.events.app.es;
 
 import com.example.events.infrastracure.rabbitmq.PublishProductConfig;
 import lombok.AccessLevel;
@@ -8,7 +8,6 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.UUID;
 
 @Entity

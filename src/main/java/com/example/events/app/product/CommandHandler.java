@@ -4,7 +4,7 @@ import com.example.events.app.product.assembler.ProductAssembler;
 import com.example.events.app.product.command.Command;
 import com.example.events.app.product.command.Create;
 import com.example.events.app.product.container.ProductContainerService;
-import com.example.events.controller.es.EventStoreService;
+import com.example.events.app.es.EventStoreService;
 import com.example.events.domain.model.Money;
 import com.example.events.domain.model.product.Product;
 import lombok.NonNull;

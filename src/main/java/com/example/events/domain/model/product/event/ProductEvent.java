@@ -1,6 +1,6 @@
 package com.example.events.domain.model.product.event;
 
-import com.example.events.controller.es.Event;
+import com.example.events.app.es.Event;
 
 public abstract class ProductEvent implements Event {
 
