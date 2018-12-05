@@ -1,13 +1,15 @@
 package com.example.events.app.product.command;
 
+import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-@AllArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
 public class Create implements Command {
 

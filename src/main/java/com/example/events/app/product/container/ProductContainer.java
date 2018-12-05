@@ -1,6 +1,5 @@
 package com.example.events.app.product.container;
 
-import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Type;
@@ -27,8 +26,11 @@ public class ProductContainer {
     @Column(name = "PAY_LOAD")
     private String payLoad;
 
-    public ProductContainer(int customerId) {
-        this.productId = UUID.randomUUID();
-        this.customerId = customerId;
+    public ProductContainer(UUID productId) {
+        this.productId = productId;
+    }
+
+    public void setPayLoad(String payLoad) {
+        this.payLoad = payLoad;
     }
 }

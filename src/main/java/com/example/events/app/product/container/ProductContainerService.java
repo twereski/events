@@ -48,8 +48,14 @@ public class ProductContainerService {
     public void save(Product product) {
         try {
             String serializedProduct = objectMapper.writeValueAsString(product);
-            productContainerRepository.updateProduct(product.getId(),
-                    serializedProduct);
+
+            ProductContainer container = productContainerRepository.findById(product.getId()).orElse(
+                    new ProductContainer(product.getId())
+            );
+
+            container.setPayLoad(serializedProduct);
+
+            productContainerRepository.save(container);
         } catch (JsonProcessingException e) {
             log.error(e.getMessage());
             throw new ProductException(ExceptionMessage.SERIALIZATION_WRITE, e);

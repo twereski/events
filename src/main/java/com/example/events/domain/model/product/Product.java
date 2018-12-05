@@ -35,8 +35,8 @@ public class Product implements Aggregate {
     private ProductState state;
 
 
-    public Product(String name, Money basicPrice) {
-        this.id = UUID.randomUUID();
+    public Product(UUID id, String name, Money basicPrice) {
+        this.id = id;
         this.name = name;
         this.basicPrice = basicPrice;
         this.state = ProductState.NEW;
