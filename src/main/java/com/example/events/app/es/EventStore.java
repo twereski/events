@@ -17,31 +17,28 @@ import java.util.UUID;
 public class EventStore {
 
     @Id
-    @Type(type="uuid-char")
-    @Column(columnDefinition = "VARCHAR2(36)")
     protected UUID id;
 
-    @Column(name = "EVENT_TYPE")
+    @Column(name = "EVENT_TYPE", nullable = false)
     protected String eventType;
 
-    @Column(name = "AGGREGATE_TYPE")
+    @Column(name = "AGGREGATE_TYPE", nullable = false)
     protected String aggregateType;
 
-    @Type(type="uuid-char")
-    @Column(name = "AGGREGATE_ID", columnDefinition = "VARCHAR2(36)")
+    @Column(name = "AGGREGATE_ID", nullable = false)
     protected UUID aggregateId;
 
-    @Column(name = "VERSION")
+    @Column(name = "VERSION", nullable = false)
     protected Integer version;
 
     @Column(name = "EMPLOYEE_ID")
     protected String employeeId;
 
-    @Column(name = "CREATED_AT")
+    @Column(name = "CREATED_AT", nullable = false)
     protected LocalDateTime createdAt;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "STATUS", length = 10)
+    @Column(name = "STATUS", length = 10, nullable = false)
     protected EventStatus eventStatus;
 
     @Lob
