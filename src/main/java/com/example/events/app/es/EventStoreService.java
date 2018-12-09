@@ -9,8 +9,9 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 @Slf4j
 @Service
@@ -25,30 +26,26 @@ public class EventStoreService {
 
     @Transactional
     public void saveEvents(Aggregate aggregate) {
-
-        List<EventStore> eventStoreList = new ArrayList<>();
-
-        aggregate.getEvents().forEach((version, event) -> {
-            String eventSerialized;
-            try {
-                eventSerialized = objectMapper.writeValueAsString(event);
-            } catch (IOException e) {
-                log.error(e.getMessage());
-                throw new EventStoreException("Bład podczas zapisu zdarzenia", e);
-            }
-            EventStore eventStore = new EventStore(event, version, eventSerialized);
-            eventStoreList.add(eventStore);
-
-        });
-
+        List<EventStore> eventStoreList = publishEvents(
+                aggregate.getEvents().entrySet().stream().map(
+                        entry -> {
+                            String eventSerialized;
+                            try {
+                                eventSerialized = objectMapper.writeValueAsString(entry.getValue());
+                            } catch (IOException e) {
+                                log.error(e.getMessage());
+                                throw new EventStoreException("Bład podczas zapisu zdarzenia", e);
+                            }
+                            return new EventStore(entry.getValue(), entry.getKey(), eventSerialized);
+                        })
+        ).collect(Collectors.toList());
         eventStoreRepository.saveAll(eventStoreList);
         aggregate.clearEvents();
     }
 
-    public void publishEvents() {
-        List<EventStore> events =  eventStoreRepository.findTop100ByEventStatusOrderByCreatedAt(EventStatus.NEW);
+    private Stream<EventStore> publishEvents(Stream<EventStore> events) {
 
-        events.forEach(e -> {
+        return events.peek(e -> {
             try {
                 eventPublisher.publish(e);
                 e.sent();
@@ -57,8 +54,6 @@ public class EventStoreService {
                 e.sentFailed();
             }
         });
-
-        eventStoreRepository.saveAll(events);
     }
 
 }
