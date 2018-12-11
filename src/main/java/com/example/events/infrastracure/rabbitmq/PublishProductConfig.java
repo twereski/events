@@ -17,7 +17,9 @@ public final class PublishProductConfig {
 
     static {
         HashMap<String, String> conf = new HashMap<>();
-        conf.put(CreatedProduct.class.getName(), PRODUCT_PREFIX.concat("created"));
+        conf.put("product.created", PRODUCT_PREFIX.concat("created"));
+        conf.put("product.bought", PRODUCT_PREFIX.concat("bought"));
+        conf.put("product.paid", PRODUCT_PREFIX.concat("paid"));
 
         CONF = ImmutableMap.copyOf(conf);
     }

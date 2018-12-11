@@ -7,7 +7,7 @@ import spock.lang.Specification
 
 class ProductTest extends Specification {
     def money = GroovyMock(Money)
-    def product = new Product('name', money)
+    def product = new Product( UUID.randomUUID(), 'name', money)
     def "Buy"() {
         given:
         when:

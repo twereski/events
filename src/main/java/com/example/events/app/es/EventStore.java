@@ -38,7 +38,7 @@ public class EventStore {
     protected LocalDateTime createdAt;
 
     @Enumerated(EnumType.STRING)
-    @Column(name = "STATUS", length = 10, nullable = false)
+    @Column(name = "STATUS", nullable = false)
     protected EventStatus eventStatus;
 
     @Lob
